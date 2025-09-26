@@ -1,0 +1,36 @@
+     SSL Certificate Import in MQ:
+	 
+1.create a new keystore:
+*************************
+cmd: runmqckm -keydb -create -db /var/mqm/ssl/key.kdb -pw yourpassword -type cms -stash
+
+it gives key.kdb – the keystore & key.sth – the stash files
+
+2.Import the Certificate:
+*******************************
+If you have a certificate file (e.g., mycert.crt or mycert.pem), import it as a signer certificate or personal certificate depending on its role.
+
+CMD: runmqckm -cert -add -db /var/mqm/ssl/key.kdb -pw yourpassword -label mycertlabel -file /path/to/mycert.crt
+                         
+						 or
+ To import a personal certificate (with private key): If you have a .p12 or .pfx file:	
+
+CMD: runmqckm -cert -import -db /var/mqm/ssl/key.kdb -pw yourpassword -label mycertlabel -file /path/to/mycert.p12 -format pkcs12
+
+3. Set the Certificate Label in MQ:
+*********************************************
+MQ needs to know which certificate to use for SSL. 
+
+CMD: ALTER QMGR SSLRKEYC('mycertlabel')
+
+4.Configure MQ Channels:
+**************************
+CMD:  ALTER CHANNEL(MY.SVRCONN) CHLTYPE(SVRCONN) SSLCIPH(TLS_RSA_WITH_AES_256_CBC_SHA256)
+
+
+5.Restart the Queue Manager
+
+Note:
+Use runmqckm -cert -list to verify certificates in the keystore.
+Ensure the keystore files (.kdb, .sth) are readable by the MQ user (mqm).
+Use DISPLAY QMGR SSLKEYR to confirm the keystore path.						 
