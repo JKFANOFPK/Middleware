@@ -1,0 +1,17 @@
+QUEUES _ COMMANDS
+
+DISPLAY QLOCAL(*)  --ALL QUEUES
+ALTER QLOCAL(NTS_STP_RES) MAXMSGL(15000000)  --- TO CHANGE PARAMETERS
+
+dspmqaut -m DEVTIMQMGR -t qmgr -p coadmin    ---- TO CHECK USER PERMISSIONS
+
+setmqaut -m DEVTIMQMGR -t qmgr -p coadmin +connect +inq  ---TO PROVIDE PERMISSIONS TO USERS
+
+DISPLAY CHSTATUS QSTATUS(FSR.INCOMING) -- status of QUEUE
+
+DISPLAY QSTATUS((INDBBRQ)) CURDEPTH IPPROCS OPPROCS    --- to check connected of sending & consuming services information
+
+DISPLAY QLOCAL(FSR.INCOMING) MAXDEPTH      ---- To check MAX depth of QUEUE
+
+
+

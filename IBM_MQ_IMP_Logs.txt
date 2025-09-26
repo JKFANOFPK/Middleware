@@ -1,0 +1,41 @@
+MQ_IMP_Logs & Paths,
+
+I Queue Manager Error Log:
+*******************************
+Contains: Information messages like channel failures, queue issues, etc.
+Rotates to AMQERR02.LOG, AMQERR03.LOG, etc.
+Path:/var/mqm/qmgrs/<QMGR_NAME>/errors/AMQERR01.LOG
+
+II MQ System Error Log:
+**********************
+Contains: System-wide errors not tied to a specific queue manager.
+Paths:/var/mqm/errors/AMQERR01.LOG
+
+III MQ Trace Logs (Need to enable)
+*************************************
+Contains:Generated using strmqtrc and endmqtrc commands. Useful for IBM support or advanced debugging.
+PAth: /var/mqm/trace/
+
+IV MQ FDC (First Failure Data Capture) Files
+***********************************************
+Contains: Each file includes a probe ID and detailed stack trace. Use ffdcview tool to analyze.
+
+Path: /var/mqm/errors/*.FDC
+
+V MQ Transaction Logs
+***************************
+Contains: Used for message persistence and recovery.  Binary logs used for recovery.  Controlled by logprimary, logsecondary, and logfile parameters in qm.ini.
+
+Path: /var/mqm/log/<QMGR_NAME>/active/
+
+
+VI MQ Audit Logs (if enabled):
+***********************************
+Requires enabling via mqconfig or setmqaut.
+PAth: /var/mqm/audit/
+
+
+
+Log Enabling
+
+Note: 
