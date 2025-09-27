@@ -12,6 +12,18 @@ DISPLAY CHSTATUS QSTATUS(FSR.INCOMING) -- status of QUEUE
 DISPLAY QSTATUS((INDBBRQ)) CURDEPTH IPPROCS OPPROCS    --- to check connected of sending & consuming services information
 
 DISPLAY QLOCAL(FSR.INCOMING) MAXDEPTH      ---- To check MAX depth of QUEUE
+DISPLAY QMGR SSLKEYR                        ----- To check SSL Configured or not 
+DIS CHANNEL(FBCCMTPCH) ALL                    ---- If below to parameters are empty their is no ssl configured to Channel 
+[SSLCIPH( )   SSLPEER( ) ]          
+
+Verifiying Channel Auth
+DISPLAY CHLAUTH(*) TYPE(ADDRESSMAP)
+DISPLAY CHLAUTH(*) TYPE(USERMAP)
+DISPLAY CHLAUTH(*) TYPE(BLOCKADDR)
+DISPLAY CHLAUTH(*) TYPE(BLOCKUSER)         this commands used to check the Channel  Authuntications.
+
+ 
+
 
 
 
