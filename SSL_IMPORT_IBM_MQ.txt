@@ -1,5 +1,9 @@
      SSL Certificate Import in MQ:
-	 
+
+DISPLAY QMGR SSLKEYR                        ----- To check SSL Configured or not 
+DIS CHANNEL(FBCCMTPCH) ALL                    ---- If below to parameters are empty their is no ssl configured to Channel 
+[SSLCIPH( )   SSLPEER( ) ]         
+
 1.create a new keystore:
 *************************
 cmd: runmqckm -keydb -create -db /var/mqm/ssl/key.kdb -pw yourpassword -type cms -stash
@@ -34,3 +38,4 @@ Note:
 Use runmqckm -cert -list to verify certificates in the keystore.
 Ensure the keystore files (.kdb, .sth) are readable by the MQ user (mqm).
 Use DISPLAY QMGR SSLKEYR to confirm the keystore path.						 
+
