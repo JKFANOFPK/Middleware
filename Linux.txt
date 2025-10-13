@@ -1,0 +1,87 @@
+ netstat -an |grep 50225
+netstat -an | grep LISTEN | grep 9444 :- AIX
+
+./backupConfig.sh -nostop
+
+curl -v -k telnet://10.24.121.38:443
+
+curl -k -x HTTP_Method https://Ip/domain :- to know whether the method is allowed or not.
+curl -X TRACE https://campuat.indusind.com:443 -k -v
+
+openssl s_client -connect 10.24.115.76:443 -tls1_2  :- To check TLS version avialability
+
+==========================windows-TLS-validation===============
+reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client"
+
+------------------THREAD AND HEAP DUMP IN JBoss--------------------
+ jstack -l 2117878 >> thread7.txt
+
+jmap -dump:live,format=b,file=/path/to/heap_dump_file.hprof <PID> :- To take live objects only.
+jmap -dump:format=b,file=/path/to/heap_dump_file_all.hprof <PID>  :- TO take all the objects.
+
+For AIX:-
+tar -cvf InstallationManager.tar InstallationManager
+gzip InstallationManager.tar
+
+For Linux:-
+tar -cvzf apache-tomcat-9.0.55_04jan2025.tar.gz apache-tomcat-9.0.55 :- To tar and zip at same time.
+
+To untar :- tar -xvf apache-tomcat-9.0.86_TCP_14122024.tar.gz
+
+ sed -i 's/127.0.0.1/10.96.68.109/g' *.xml :- to replace the ip with another ip in all the config files in the JBoss
+ 
+ ./standalone.sh >> console$(date +%Y%m%d).out 2>&1 > /dev/null & :- to modified standlone.sh file to startjboss.sh
+ 
+ jmap -heap pid :- to heap size details
+
+svmon -P 15008084 -O unit=MB :- To check the memory utilisation in AIX
+
+ du -sh * | sort -h -k 1 :- to fetch high memory from bottom
+du -sg * |sort -nr |head -10 :- top 10 in AIX
+scp -pr WAS_FP_26/ mwadmin@10.27.70.32:/home/mwadmin    :- to transfer file from server to another server
+
+scp solsftpusr@10.96.33.59:cores/physmem,2024-04-29,01.48.18.gz .  :- copy the files from another server to current directory of the server 
+
+sed -i 's/127.0.0.1/10.96.68.109/g' *.xml :- to replace the ip with another ip in all the config files in the JBoss under <JBOSS_Home>configuration path 
+
+tar -cvf jboss-eap-7.4_DR_setup.tar --exclude=jboss-eap-7.4/domain/servers --exclude=jboss-eap-7.4/domain/servers_BKP_030225 jboss-eap-7.4 :- To take tar backup by excluding multiple files/directories.
+tar -cvf jboss-eap-7.3_BeforeMigration.tar --exclude='*/log/*' jboss-eap-7.3
+
+find /data/ame6.5-cache/jbcs-httpd24-2.4 -iname robots.txt :- to check that file is existing or not.
+
+alternatives --config java :- to find the java paths
+
+ps -ef|grep java|grep AppServer|awk '{print $2}'|xargs kill -9  :- To stop all the running JVMS.
+
+ps -ef | grep httpd | grep -v grep | awk {'print $2'} | xargs kill -9
+
+find /path/ -name filename :- to check the available files in linux.
+=======================================Proxy pass conf in JBcs===============================
+SSLProxyEngine On
+
+ProxyPreserveHost On
+ ProxyPass /egov http://10.24.62.162:8090/egov
+ ProxyPassReverse /egov http://10.24.62.162:8090/egov
+
+
+</VirtualHost>
+
+ProxyPass /upi/updateMobSMSReq https://indusupiuat.indusind.com/upi/updateMobSMSReq
+ProxyPassReverse /upi/updateMobSMSReq https://indusupiuat.indusind.com/upi/updateMobSMSReq
+
+==============================================================================
+
+Enabling Access logs in JBoss :- <access-log pattern="%h %l %u %t &quot;%r&quot; %s %b &quot;%{i,Referer}&quot; &quot;%{i,User-Agent}&quot; &quot;%{i,COOKIE}&quot; &quot;%{o,SET-COOKIE}&quot; %S &quot;%I&quot; %T"/>
+
+We have to set the above value under the below tag..
+<server name="default-server">
+                <ajp-listener name="ajp" socket-binding="ajp" record-request-start-time="true"/>
+                <http-listener name="default" socket-binding="http" max-post-size="1717986920" max-parameters="400000" record-request-start-time="true" redirect-socket="https" enable-http2="true"/>
+                <https-listener name="https" socket-binding="https" max-post-size="1717986920" max-parameters="400000" security-realm="ApplicationRealm" enable-http2="true"/>
+                <host name="default-host" alias="localhost">
+                    <location name="/" handler="welcome-content"/>
+                    <access-log pattern="%h %l %u %t &quot;%r&quot; %s %b &quot;%{i,Referer}&quot; &quot;%{i,User-Agent}&quot; &quot;%{i,COOKIE}&quot; &quot;%{o,SET-COOKIE}&quot; %S &quot;%I&quot; %T"/>
+                    <http-invoker security-realm="ApplicationRealm"/>
+                </host>
+            </server>
+=================================================================================================
