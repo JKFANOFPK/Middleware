@@ -7,6 +7,8 @@ DIS CHANNEL(FBCCMTPCH) ALL                    ---- If below to parameters are em
 1.create a new keystore:
 *************************
 cmd: runmqckm -keydb -create -db /var/mqm/ssl/key.kdb -pw yourpassword -type cms -stash
+                                    or
+/opt/mqm/gskit8/bin/gsk8capicmd_64 -keydb -create -db /var/mqm/qmgrs/INDUSNET/ssl/key.kdb -pw indus123 -type cms -stash    to use this command need to set export bin path in /home/mqm/.bash_profile after given this to reload changes use source /home/mqm/.bash_profile command
 
 it gives key.kdb – the keystore & key.sth – the stash files
 
@@ -38,4 +40,5 @@ Note:
 Use runmqckm -cert -list to verify certificates in the keystore.
 Ensure the keystore files (.kdb, .sth) are readable by the MQ user (mqm).
 Use DISPLAY QMGR SSLKEYR to confirm the keystore path.						 
+
 
