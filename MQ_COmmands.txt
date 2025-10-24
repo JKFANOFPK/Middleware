@@ -1,5 +1,6 @@
 QUEUES _ COMMANDS
 
+dmpmqcfg -m INDUSNET -a -o mqsc > INDUSNET_config.mqsc  --- To take backup of QMANAGER configration ( AT the time of Migration, cloning, backup, )
 DISPLAY QLOCAL(*)  --ALL QUEUES
 ALTER QLOCAL(NTS_STP_RES) MAXMSGL(15000000)  --- TO CHANGE PARAMETERS
 
@@ -23,6 +24,7 @@ DISPLAY CHLAUTH(*) TYPE(BLOCKADDR)
 DISPLAY CHLAUTH(*) TYPE(BLOCKUSER)         this commands used to check the Channel  Authuntications.
 
  
+
 
 
 
