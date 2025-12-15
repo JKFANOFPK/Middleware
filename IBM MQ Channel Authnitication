@@ -1,0 +1,19 @@
+DISPLAY CHLAUTH(channel-name)
+
+DISPLAY QMGR CHLAUTH
+
+
+ALTER QMGR CHLAUTH(ENABLED)
+
+
+
+Add Custom Rules (Optional)
+For example, to allow a specific user on a SVRCONN channel:
+
+
+SET CHLAUTH('MY.SVRCONN') TYPE(USERMAP) CLNTUSER('appuser') MCAUSER('mqapp')
+
+
+5. Refresh Security
+
+REFRESH SECURITY TYPE(CHLAUTH)
