@@ -1,0 +1,67 @@
+                                        Jboss Migration 7 to 8 
+
+I Prerequisites 
+check the supported JAVA version Avaliblity (alternatives --config java)
+copy the packages in mount point
+check space avaliablity of Mount point
+
+Step II
+ Migration:
+ 
+ download the latest packages of Jboss & unzip in required mount point
+ 
+ download & copy migration package jboss-eap-8.0.0-server-migration.zip in proper file
+ 
+ Command: 
+ ./jboss-server-migration.sh -source old version path -target new version path
+ 
+ EX: ./jboss-server-migration.sh -s /home/litadm/litmusworld/jboss-eap-7.2 -t /RH/jboss-eap-8.0/
+ 
+ After command excusion follow few steps 
+ 
+ erver migration starting...
+
+ INFO  --- Migrating modules requested by environment...
+
+ INFO  No modules to migrate.
+
+ Migrate the source's standalone server?
+yes/no? yes
+
+ INFO  --- Migrating standalone server...
+
+ INFO  Source's standalone content migrated.
+
+ INFO  Source's standalone configurations found: [standalone-full-ha.xml, standalone-full.xml, standalone-ha.xml, standalone-load-balancer.xml, standalone.xml]
+
+Migrate all configurations?
+yes/no? yes
+
+This tool is not able to assert if the non-persistent deployments found are compatible with the target server, skip scanner's deployments migration?
+yes/no? no
+
+Migrate the source's managed domain?( if domain give yes or standalone give no
+yes/no? no
+ 
+ Server migration done.
+
+ INFO
+----------------------------------------------------------------------------------------------------------
+ Task Summary
+----------------------------------------------------------------------------------------------------------
+
+ server .......................................................................................... SUCCESS
+  standalone ..................................................................................... SUCCESS
+   contents.standalone.migrate-content-dir ....................................................... SUCCESS
+    contents.standalone.migrate-content(path=2b/26955fcf328000b8fe6853f3fe8b3f8e56a242/content) .. SUCCESS
+   standalone-configurations ..................................................................... SUCCESS
+    standalone-configuration(source=standalone-full-ha.xml) ...................................... SUCCESS
+    standalone-configuration(source=standalone-full.xml) ......................................... SUCCESS
+    standalone-configuration(source=standalone-ha.xml) ........................................... SUCCESS
+    standalone-configuration(source=standalone-load-balancer.xml) ................................ SUCCESS
+    standalone-configuration(source=standalone.xml) .............................................. SUCCESS
+
+----------------------------------------------------------------------------------------------------------
+ Migration Result: SUCCESS
+----------------------------------------------------------------------------------------------------------
+
