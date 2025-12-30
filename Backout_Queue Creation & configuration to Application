@@ -1,0 +1,24 @@
+                     Backout_Queue Creation & configuration to Application.
+
+* MQSC Script to create Backout Queue and link it to an application input queue
+* Queue Manager: QMGR_NAME (replace with your actual queue manager name)
+
+* 1) Define the Backout Queue (BOQ)
+DEFINE QLOCAL(APP.BOQ) DESCR('Backout Queue for APP.INPUT.Q') MAXDEPTH(5000) MAXMSGL(10485760) DEFPSIST(YES)
+
+* 2) Define the Application Input Queue and link BOQ
+DEFINE QLOCAL(APP.INPUT.Q) +
+       DESCR('Application Input Queue') MAXDEPTH(5000) MAXMSGL(10485760) DEFPSIST(YES) BOQNAME(APP.BOQ) BOQTHRESH(3)
+IF u already created APPlication QUEUE 
+
+ALTER QLOCAL(APP.INPUT.Q) BOQNAME(APP.BOQ) BOQTHRESH(3)
+
+* 3) Display queues to verify configuration
+DISPLAY QLOCAL(APP.INPUT.Q) BOQNAME BOQTHRESH
+
+DISPLAY QLOCAL(APP.BOQ)
+
+* Notes:
+* - BOQTHRESH(3) means after 3 failed attempts, message moves to BOQ.
+* - Adjust MAXDEPTH and MAXMSGL as per your environment.
+* - Ensure application logic handles messages from BOQ (e.g., error handling or manual intervention).
