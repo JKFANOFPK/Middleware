@@ -23,7 +23,8 @@ DISPLAY CHLAUTH(*) TYPE(USERMAP)
 DISPLAY CHLAUTH(*) TYPE(BLOCKADDR)
 DISPLAY CHLAUTH(*) TYPE(BLOCKUSER)         this commands used to check the Channel  Authuntications.
 
- 
+CLEAR QLOCAL(<TransmissionQueueName>)   ---To clear Pending & unwanted Messages in a QUEUE. 
+
 
 
 
