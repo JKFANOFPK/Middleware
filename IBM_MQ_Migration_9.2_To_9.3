@@ -1,0 +1,19 @@
+                                             IBM_MQ_Migration_9.2_To_9.3(Linux & AIX)
+
+
+IBM MQ Migration Steps:
+
+step:1 Need to install the latest version of MQ with different installation path.
+step:2  after successfully installation need to set the Primary path for New version of  MQ
+command:    . /IBMMQ9.3/IBM/usr/mqm/bin/setmqenv -s
+
+step:3  Once Primary path is completed need to migrate the QMANAGERS one by one from old to new version.
+
+command: setmqm -m Qmanagername -n installationname 
+EX: setmqm -m SITMQMGR -n Installation3
+
+step: 4 Check the QMANAGER is Migrated or not
+ 
+dspmq -o installation     --- Need to check Qmanager with perticular version of MQ
+
+step:5 once everything is completed take the restart of QMANAGER one by one.
