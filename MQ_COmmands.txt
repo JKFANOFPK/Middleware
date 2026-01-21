@@ -25,6 +25,18 @@ DISPLAY CHLAUTH(*) TYPE(BLOCKUSER)         this commands used to check the Chann
 
 CLEAR QLOCAL(<TransmissionQueueName>)   ---To clear Pending & unwanted Messages in a QUEUE. 
 
+triggering verifing command
+
+DISPLAY QLOCAL(CBSINDBTRQ) TRIGGER TRIGTYPE INITQ USAGE TRIGDPTH   --- to check trigging enabled or not 
+
+Triggering enable command
+
+ALTER QLOCAL(CBSINDBTRQ) USAGE(XMITQ) TRIGGER TRIGTYPE(FIRST) INITQ(SYSTEM.CHANNEL.INITQ) ---- to enable the trigging 
+
+ note here INITQ(SYSTEM.CHANNEL.INITQ) is fixed no need to change that value
+
+
+
 
 
 
