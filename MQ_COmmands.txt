@@ -35,6 +35,8 @@ ALTER QLOCAL(CBSINDBTRQ) USAGE(XMITQ) TRIGGER TRIGTYPE(FIRST) INITQ(SYSTEM.CHANN
 
  note here INITQ(SYSTEM.CHANNEL.INITQ) is fixed no need to change that value
 
+runmqras -qmlist TFMQM -section defs ---will gather the files (such as error logs and FDC files) and information for troubleshooting into a zip file.
+
 
 
 
