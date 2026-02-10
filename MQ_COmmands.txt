@@ -37,6 +37,11 @@ ALTER QLOCAL(CBSINDBTRQ) USAGE(XMITQ) TRIGGER TRIGTYPE(FIRST) INITQ(SYSTEM.CHANN
 
 runmqras -qmlist TFMQM -section defs ---will gather the files (such as error logs and FDC files) and information for troubleshooting into a zip file.
 
+dmpmqmsg -m DEVTIMQMGR -i TI.GWY.OUT -f /IBMMQ/TI.GWY.OUT.msg   --- To take the backup of msg from perticular queue
+
+
+
+
 
 
 
