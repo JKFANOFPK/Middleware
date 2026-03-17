@@ -65,3 +65,11 @@ yes/no? no
  Migration Result: SUCCESS
 ----------------------------------------------------------------------------------------------------------
 
+
+
+Jboss Patching 
+..................
+
+Command:
+./jboss-eap-installation-manager.sh \update perform \--offline \--repositories=file:/data/software/jboss_8_1/jboss-eap-8.1.4-maven-repository.zip \--yes \--dir=jboss-eap-8.1
+
