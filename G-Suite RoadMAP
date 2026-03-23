@@ -1,0 +1,209 @@
+A Google Workspace Admin manages Google’s enterprise collaboration platform for organizations, including:
+Core services you administer
+
+Gmail (mail routing, security, spam, compliance)
+Google Drive (storage, sharing, DLP)
+Google Calendar
+Google Meet
+Google Docs / Sheets / Slides
+User & group management
+Security policies & access controls
+Identity & SSO with third‑party apps
+
+Daily responsibilities
+
+Creating/deleting users
+Email migrations (Exchange → Gmail)
+Managing groups, aliases, routing rules
+Security hardening (2FA, DLP, context‑aware access)
+Troubleshooting mail delivery and access issues
+Supporting audits & compliance holds
+
+👉 In short: GWS Admin = collaboration + identity + security admin
+
+
+           3‑Month Google Workspace Admin Transition Roadmap
+
+
+✅ Week 1: Google Workspace Basics
+Skills to learn
+
+What is Google Workspace (architecture & services)
+Admin Console navigation
+Licensing models
+Org Units (OU) vs Groups
+Admin roles & privileges
+
+Hands‑on
+
+Create a free trial GWS tenant
+Explore Admin Console sections
+Create test users & groups
+
+✅ Output:
+
+You can confidently navigate Admin Console and explain GWS to others
+
+Week 2: User & Group Management
+Skills
+
+User lifecycle (create / suspend / delete)
+Bulk user creation via CSV
+Group types & use cases
+Aliases vs groups
+Password & 2‑Step Verification policies
+
+Hands‑on
+
+Create 3–5 test users
+Configure OU‑based password policy
+Assign admin roles to test accounts
+
+✅ Middleware mapping:
+
+Similar to LDAP / AD user lifecycle
+
+Week 3: Gmail Administration (Critical Skill)
+Skills
+
+Gmail settings per OU
+Email routing & delivery
+Aliases, shared mailboxes (group‑based)
+Spam & quarantine
+Mail log search
+
+Hands‑on
+
+Configure aliases
+Test internal & external mail flow
+Analyze delivery failures in mail logs
+
+✅ Extra focus:
+
+Understand mail headers & bounce reasons
+Week 4: Email Authentication (High‑Value Skill)
+Skills
+
+SPF
+DKIM
+DMARC
+Why domains get spoofed
+Gmail security dashboard
+
+Hands‑on
+
+Configure SPF, DKIM & DMARC on test domain
+Validate using email headers
+
+✅ Output:
+
+You can troubleshoot email delivery & spoofing issues confidently
+
+
+🔹 PHASE 2: SECURITY & COLLABORATION (Days 31–60)
+Goal: Move beyond “basic admin” into security‑aware admin
+
+✅ Week 5: Drive & Collaboration Controls
+Skills
+
+Google Drive vs Shared Drives
+Internal vs external sharing
+Ownership transfer
+Download/print/copy restrictions
+Storage reports
+
+Hands‑on
+
+Create Shared Drives
+Restrict external sharing
+Transfer file ownership
+
+✅ Real‑world relevance:
+
+Data leakage prevention scenarios
+
+
+✅ Week 6: Security & Compliance
+Skills
+
+Enforcing 2‑Step Verification
+Context‑Aware Access
+OAuth app controls
+Google Security Center
+Alert rules
+
+Hands‑on
+
+Enforce 2SV for users
+Block risky OAuth apps
+Configure admin alerts
+
+✅ Career impact:
+
+This skill moves you into security‑adjacent roles
+
+
+✅ Week 7: Google Vault (Compliance Skill)
+Skills
+
+Data retention rules
+eDiscovery concepts
+Legal holds
+Export data for audits
+
+Hands‑on
+
+Create retention policies
+Perform test searches & exports
+
+✅ Middleware similarity:
+
+Like audit/compliance controls in enterprise apps
+
+
+✅ Week 8: Troubleshooting & Support
+Skills
+
+Login failures
+Mail delivery issues
+Drive permission problems
+Mobile sync issues
+Audit logs & reports
+
+Hands‑on
+
+Simulate user issues
+Diagnose using audit logs
+
+✅ Output:
+
+Ready for L2/L3 GWS support roles
+
+
+🔹 PHASE 3: PROJECT & ADVANCED SKILLS (Days 61–90)
+Goal: Become project‑ready & job‑ready
+
+✅ Week 9: Migration Skills (Very Important)
+Skills
+Exchange → Gmail migration flow
+User, group & data migration basics
+Pre‑migration checks
+Cutover concepts
+
+Hands‑on
+
+Explore Data Migration Service
+Perform sample mailbox migration
+
+✅ This is where project roles come from
+Exchange → Gmail migration flow
+User, group & data migration basics
+Pre‑migration checks
+Cutover concepts
+
+Hands‑on
+
+Explore Data Migration Service
+Perform sample mailbox migration
+
+✅ This is where project roles come from
