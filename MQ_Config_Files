@@ -1,0 +1,63 @@
+                                              MQ_Configuration files...
+
+MQ_Configuration file(mqs.ini)
+************************************
+   DefaultPrefix=/var/mqm
+
+LogDefaults:
+   LogDefaultPath=/var/mqm/log
+
+QueueManager:
+   Name=FCSSINDBQM
+   Prefix=/var/mqm
+   Directory=FCSSINDBQM
+   InstallationName=Installation1
+QueueManager:
+   Name=FCSS_MONTRAN
+   Prefix=/var/mqm
+   Directory=FCSS_MONTRAN
+   InstallationName=Installation1
+
+
+QUEUE MANAGER configuration file(qm.ini)
+********************************************
+
+ExitPath:
+   ExitsDefaultPath=/var/mqm/exits
+   ExitsDefaultPath64=/var/mqm/exits64
+#*                                                                 *#
+#*                                                                 *#
+Log:
+   LogPrimaryFiles=3
+   LogSecondaryFiles=2
+   LogFilePages=4096
+   LogType=CIRCULAR
+   LogBufferPages=0
+   LogPath=/var/mqm/log/FCSSINDBQM/
+   LogWriteIntegrity=TripleWrite
+Service:
+   Name=AuthorizationService
+   EntryPoints=14
+ServiceComponent:
+   Service=AuthorizationService
+   Name=MQSeries.UNIX.auth.service
+   Module=amqzfu
+   ComponentDataSize=0
+SSL:
+   AllowTLSV13=Yes
+   MinimumRSAKeySize=1
+Channels:
+   ChlauthEarlyAdopt=Yes
+   ChlauthIgnoreUserCase=No
+TCP:
+   SndBuffSize=0
+   RcvBuffSize=0
+   RcvSndBuffSize=0
+   RcvRcvBuffSize=0
+   ClntSndBuffSize=0
+   ClntRcvBuffSize=0
+   SvrSndBuffSize=0
+   SvrRcvBuffSize=0
+   SecureCommsOnly=NO
+
+
