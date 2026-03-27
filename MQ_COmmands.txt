@@ -1,43 +1,43 @@
 QUEUES _ COMMANDS
-
+BACKUP_COMMANDS:
+***************
 dmpmqcfg -m INDUSNET -a -o mqsc > INDUSNET_config.mqsc  --- To take backup of QMANAGER configration ( AT the time of Migration, cloning, backup, )
-DISPLAY QLOCAL(*)  --ALL QUEUES
+dmpmqmsg -m DEVTIMQMGR -i TI.GWY.OUT -f /IBMMQ/TI.GWY.OUT.msg   --- To take the backup of msg from perticular queue
+
+Permission Commands:
+**********************
 ALTER QLOCAL(NTS_STP_RES) MAXMSGL(15000000)  --- TO CHANGE PARAMETERS
-
 dspmqaut -m DEVTIMQMGR -t qmgr -p coadmin    ---- TO CHECK USER PERMISSIONS
-
 setmqaut -m DEVTIMQMGR -t qmgr -p coadmin +connect +inq  ---TO PROVIDE PERMISSIONS TO USERS
 
+DISPAY COMMANDS:
+***************
+DISPLAY QLOCAL(*)  --ALL QUEUES
 DISPLAY CHSTATUS QSTATUS(FSR.INCOMING) -- status of QUEUE
-
 DISPLAY QSTATUS((INDBBRQ)) CURDEPTH IPPROCS OPPROCS    --- to check connected of sending & consuming services information
-
 DISPLAY QLOCAL(FSR.INCOMING) MAXDEPTH      ---- To check MAX depth of QUEUE
 DISPLAY QMGR SSLKEYR                        ----- To check SSL Configured or not 
 DIS CHANNEL(FBCCMTPCH) ALL                    ---- If below to parameters are empty their is no ssl configured to Channel 
 [SSLCIPH( )   SSLPEER( ) ]          
 
 Verifiying Channel Auth
+************************
 DISPLAY CHLAUTH(*) TYPE(ADDRESSMAP)
 DISPLAY CHLAUTH(*) TYPE(USERMAP)
 DISPLAY CHLAUTH(*) TYPE(BLOCKADDR)
 DISPLAY CHLAUTH(*) TYPE(BLOCKUSER)         this commands used to check the Channel  Authuntications.
-
 CLEAR QLOCAL(<TransmissionQueueName>)   ---To clear Pending & unwanted Messages in a QUEUE. 
 
-triggering verifing command
-
+triggering commands:
+***************************
 DISPLAY QLOCAL(CBSINDBTRQ) TRIGGER TRIGTYPE INITQ USAGE TRIGDPTH   --- to check trigging enabled or not 
+ALTER QLOCAL(CBSINDBTRQ) USAGE(XMITQ) TRIGGER TRIGTYPE(FIRST) INITQ(SYSTEM.CHANNEL.INITQ) ---- to enable the trigging note here INITQ(SYSTEM.CHANNEL.INITQ) is fixed no need to change that value
 
-Triggering enable command
 
-ALTER QLOCAL(CBSINDBTRQ) USAGE(XMITQ) TRIGGER TRIGTYPE(FIRST) INITQ(SYSTEM.CHANNEL.INITQ) ---- to enable the trigging 
-
- note here INITQ(SYSTEM.CHANNEL.INITQ) is fixed no need to change that value
-
+InfoCollect Commands:
+********************
 runmqras -qmlist TFMQM -section defs ---will gather the files (such as error logs and FDC files) and information for troubleshooting into a zip file.
 
-dmpmqmsg -m DEVTIMQMGR -i TI.GWY.OUT -f /IBMMQ/TI.GWY.OUT.msg   --- To take the backup of msg from perticular queue
 
 
 
