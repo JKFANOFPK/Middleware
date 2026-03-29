@@ -27,7 +27,7 @@ CMD: runmqckm -cert -import -db /var/mqm/ssl/key.kdb -pw yourpassword -label myc
 *********************************************
 MQ needs to know which certificate to use for SSL. 
 
-CMD: ALTER QMGR SSLRKEYC('mycertlabel')
+CMD: ALTER QMGR SSLRKEYR('mycertlabel')
 
 4.Configure MQ Channels:
 **************************
