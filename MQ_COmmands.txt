@@ -2,6 +2,7 @@ QUEUES _ COMMANDS
 BACKUP_COMMANDS:
 ***************
 dmpmqcfg -m INDUSNET -a -o mqsc > INDUSNET_config.mqsc  --- To take backup of QMANAGER configration ( AT the time of Migration, cloning, backup, )
+runmqsc <QMNAME> < INDUSNET_config.mqsc    ------------ To restore the configuration from DC to DR same QMANAGER.
 dmpmqmsg -m DEVTIMQMGR -i TI.GWY.OUT -f /IBMMQ/TI.GWY.OUT.msg   --- To take the backup of msg from perticular queue
 
 Permission Commands:
