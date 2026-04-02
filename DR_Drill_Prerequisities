@@ -30,3 +30,7 @@ DISPLAY CHSTATUS(*)
 
 7. Redirect Applications
 Update client connection strings or CCDT (Client Channel Definition Table) to point to DR host.
+
+
+Note:
+If u are using RDMQ(Replicated data QMANAGER) replication handles automatically you just need to start the DR instance.
