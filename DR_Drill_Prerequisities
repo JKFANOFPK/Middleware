@@ -1,0 +1,32 @@
+                           PROD TO DR 
+When we are performing the DR drill it must not shuold to restore the messages data into DR 
+
+Step by step Process of DR Drill
+
+1. Export Queue Manager Configuration(PROD)
+Ex Cmd: dmpmqcfg -m PROD_TFMQM > prod_tfmqm.mqsc
+
+2. Backup Persistent Data
+Stop the PROD queue manager cleanly
+Cmd:endmqm -w PROD_TFMQM
+
+Queue manager data directory (usually /var/mqm/qmgrs/PROD_TFMQM)
+
+Log files (usually /var/mqm/log/PROD_TFMQM)
+Cmd : tar -cvf prod_qmgr_backup.tar /var/mqm/qmgrs/PROD_QMGR /var/mqm/log/PROD_QMGR
+3.Restore on DR:
+tar -xvf prod_tfmqm_backup.tar -C /var/mqm/  
+Note: DR QMGR should have same name 
+
+
+4. Recreate MQ Objects
+Apply the MQSC script on DR:
+Cmd: runmqsc PROD_TFMQM < prod_tfmqm.mqsc
+
+5 start Manager & validate(DR side) 
+Cmd:amqsget QUEUE_NAME PROD_QMGR
+runmqsc PROD_QMGR
+DISPLAY CHSTATUS(*)
+
+7. Redirect Applications
+Update client connection strings or CCDT (Client Channel Definition Table) to point to DR host.
