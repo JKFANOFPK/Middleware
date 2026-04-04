@@ -1,0 +1,17 @@
+After MQ client installation We need to copy  the Client Channel Definition Table from MQ server(C:\ProgramData\IBM\MQ\qmgrs\TFMQM\@ipcc\AMQCLCHL.TAB) to client side   (var/mqm/AMQCLCHL.TAB) if it is not done u can perform below steps to 
+unset ccdt checking.
+ 
+ 
+unset MQCHLLIB
+unset MQCHLTAB
+env | egrep MQCHL
+export MQSERVER="CIMPLR.TO.SAA.SVRCON/TCP/10.24.219.48(1416)"
+cd /opt/mqm/samp/bin/
+./amqsputc CIMPLR.TO.SAA TFMQM
+Sample AMQSPUT0 start
+ 
+ 
+to give user permission to connect MQ client
+ 
+export MQSAMP_USER_ID=appuser
+export MQSAMP_USER_PWD=password
