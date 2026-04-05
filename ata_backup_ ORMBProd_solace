@@ -1,0 +1,63 @@
+
+How to take data backup of ORMB Prod from solace ( mail from ypgesh chipkar - subject line: - Clear and Start Solace queues) 
+=============================================================================================================================
+a] login to solace prod console : https://solaceprodm2.indusind.com
+
+b] select VPN : IBL_ORMB
+
+c] click on right side corner : show 100 pages
+
+d] click on queue : select Q.ORMB.ACCOUNTS -->> setting --->> stop incoming messages
+
+e] click on queue : select Q.ORMB.CUSTOMER -->> setting --->> stop incoming messages
+
+f] In summary of both(Q.ORMB.ACCOUNTS,Q.ORMB.CUSTOMER) the queue, check how many queue are in waiting state
+
+===============================now from ARCOS ====================================
+
+1] In 10.96.11.198 - go to path : /home/mwadmin/solace-pretty-dump-1.1.1/bin
+2] perform the activity using mwadmin user
+3] ./prettydump tcp://solace.indusind.com:55555 IBL_ORMB ormbdatauser ormbdatauser b:Q.ORMB.CUSTOMER 1 >> /middleware/Q.ORMB.CUSTOMER_17MAR2026.txt
+
+don't use ctl + c command till step 4 is not verifies (5min)
+4] cd /middleware/
+
+tail -100f Q.ORMB.CUSTOMER_17MAR2026.txt 
+
+check messages count same as the waiting messages in Q.ORMB.CUSTOMER queue setting.
+
+if same then use ctl + c command
+
+5] ./prettydump tcp://solace.indusind.com:55555 IBL_ORMB ormbdatauser ormbdatauser b:Q.ORMB.ACCOUNTS 1 >> /middleware/Q.ORMB.ACCOUNTS_17MAR2026.txt
+
+don't use ctl + c command till step 4 is not verifies (5min)
+6] cd /middleware/
+
+tail -100f Q.ORMB.ACCOUNTS_17MAR2026.txt 
+
+check messages count same as the waiting messages in Q.ORMB.ACCOUNTS queue setting.
+
+if same then use ctl + c command
+
+7] share both the dumps from /middleware path with yogesh chipkar on teams.
+
+=================================================================================================
+sample command to check msg : ./prettydump tcp://solace.indusind.com:55555 IBL_ORMB ormbdatauser ormbdatauser b:Q.ORMB.ACCOUNTS 1 --count=2 
+==================================
+
+check if below error comming , then do the troubleshooting
+==================================================ERROR=================================================
+[mwadmin@PRDSOLACEOT01 bin]$ ./prettydump tcp://solace.indusind.com:55555 IBL_ORMB ormbdatauser ormbdatauser b:Q.ORMB.CUSTOMER 1 >> /middleware/Q.ORMB.CUSTOMER_17MAR2026.txt
+
+Failed to load native library:jansi-2.4.1-8b81bf0c9f63bd13-libjansi.so. The native library file at /tmp/jansi-2.4.1-8b81bf0c9f63bd13-libjansi.so is not executable, make sure that the directory is mounted on a partition without the noexec flag, or set the jansi.tmpdir system property to point to a proper location.  osinfo: Linux/x86_64
+java.lang.UnsatisfiedLinkError: /tmp/jansi-2.4.1-8b81bf0c9f63bd13-libjansi.so: /tmp/jansi-2.4.1-8b81bf0c9f63bd13-libjansi.so: failed to map segment from shared object
+================================solution=======================================================
+[root@PRDSOLACEOT01 ~]# mount | grep /tmp
+/dev/mapper/rhel-tmp on /tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+[root@PRDSOLACEOT01 ~]# mount -o remount,exec /tmp
+[root@PRDSOLACEOT01 ~]# mount | grep /tmp
+/dev/mapper/rhel-tmp on /tmp type xfs (rw,nosuid,nodev,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+/dev/mapper/rhel-var_tmp on /var/tmp type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
+[root@PRDSOLACEOT01 ~]# logout
+===========================================================================================================
