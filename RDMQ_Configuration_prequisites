@@ -1,0 +1,111 @@
+         RDMQ_installation_QMGR creation
+           
+
+STEP 1: OS Pre-checks (ALL NODES)
+***************************************
+hostnamectl set-hostname node1.example.com
+timedatectl set-timezone Asia/Kolkata
+systemctl enable --now chronyd
+``
+Disable SELinux (recommended):
+************************************
+setenforce 0
+vi /etc/selinux/config
+SELINUX=disabled
+Disable firewall or open required cluster ports:
+systemctl stop firewalld
+systemctl disable firewalld
+``
+STEP 2: Configure Passwordless SSH (ALL NODES)
+**************************************************
+ssh-keygen
+ssh-copy-id node1
+ssh-copy-id node2
+ssh-copy-id witness
+``
+ssh node2 hostname --check above step success or not
+STEP 3: Install IBM MQ (ALL NODES)
+*****************************************
+rpm -ivh MQSeriesRuntime-9.4.0-*.rpm
+rpm -ivh MQSeriesServer-9.4.0-*.rpm
+rpm -ivh MQSeriesClient-9.4.0-*.rpm
+rpm -ivh MQSeriesSamples-9.4.0-*.rpm
+rpm -ivh MQSeriesJRE-9.4.0-*.rpm
+
+/opt/mqm/bin/mqlicense.sh -accept
+``
+
+
+STEP 4: Install DRBD (THIS FIXES YOUR ERROR)
+*******************************************
+dnf install -y epel-release
+dnf install -y https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
+Enable DRBD repo:
+dnf config-manager --enable elrepo-testing
+Install DRBD Packages (ALL NODES)
+***********************************
+dnf install -y \
+kmod-drbd \
+drbd-utils \
+drbd-udev \
+drbd-bash-completion \
+drbd-pacemaker
+
+Verify versions:
+***********************
+drbdadm --version
+modinfo drbd
+
+STEP 5: Install Pacemaker & Corosync (ALL NODES)
+*************************************************
+dnf install -y pacemaker corosync pcs resource-agents
+systemctl enable --now pcsd
+``
+Set hacluster password:
+************************
+passwd hacluster
+``
+STEP 6: Create Cluster:
+***************************
+pcs host auth node1 node2 witness -u hacluster
+pcs cluster setup rdqmcluster node1 node2 witness
+pcs cluster start --all
+pcs cluster enable --all
+``
+Verify:
+***********
+pcs status
+
+STEP 7: Prepare RDQM Storage
+*******************************
+lsblk
+ex:/dev/sdb
+
+STEP 8: Install RDQM Packages:
+******************************
+rpm -ivh MQSeriesRDQM-9.4.0-5.x86_64.rpm
+rpm -qa | grep RDQM
+
+STEP 9: Create RDQM Queue Manager
+**********************************
+export LD_LIBRARY_PATH=/opt/mqm/lib64
+``
+Create QM:
+crtmqm -sxs -fs 2G -md /dev/sdb RDQM1
+
+
+STEP 10: Start & Validate RDQM:
+********************************
+strmqm RDQM1
+dspmq -o status
+``
+Check HA status:
+rdqmadm status
+``
+
+Force failover test:
+*******************
+rdqmadm move RDQM1 -n node2
+
+
+
