@@ -1,6 +1,8 @@
  netstat -an |grep 50225
 netstat -an | grep LISTEN | grep 9444 :- AIX
 
+tar -cvf jbcs-httpd24-2.4_v2.4.57_B4Migration_24March26.tar --exclude='*/logs/*' jbcs-httpd24-2.4 --- totake thr tar bacukp without unnessary logs 
+
 ./backupConfig.sh -nostop
 
 curl -v -k telnet://10.24.121.38:443
