@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!-- DEPRECATED - HTTP server plugin config file for the cell prodfinwas01Cell01 generated on 2023.09.27 at 12:52:26 PM IST-->
+<Config ASDisableNagle="false" AcceptAllContent="true" AppServerPortPreference="HostHeader" ChunkedResponse="false" FIPSEnable="false" FailoverToNext="false" HTTPMaxHeaders="300" HostVerificationStartupCheck="false" IISDisableFlushFlag="false" IISDisableNagle="false" IISPluginPriority="High" IMSecureConnectorVerification="fail" IMSecureEndpointVerification="fail" IgnoreDNSFailures="false" KillWebServerStartUpOnParseErr="true" MarkBusyDown="false" OS400ConvertQueryStringToJobCCSID="false" RefreshInterval="1800" ResponseChunkSize="64" SSLConsolidate="true" SecureHostVerification="false" StrictSecurity="false" TrustedProxyEnable="false" VHostMatchingCompat="false" CertLabel="None" UseInsecure="true">
+   <Log LogLevel="Error" Name="/finweb/WebSphere/Plugins/logs/INDSPRODwebserver0/30225_plugin.log"/>
+   <Property Name="ESIEnable" Value="false"/>
+   <Property Name="ESIMaxCacheSize" Value="1024"/>
+   <Property Name="ESIInvalidationMonitor" Value="false"/>
+   <Property Name="ESIEnableToPassCookies" Value="false"/>
+   <Property Name="ESICacheidFull" Value="false"/>
+   <Property Name="PostSizeLimit" Value="-1"/>
+   <Property Name="PostBufferSize" Value="0"/>
+   <Property Name="PluginInstallRoot" Value="/finweb/WebSphere/Plugins/"/>
+   <Property Name="Keyfile" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.kdb"/>
+   <Property Name="Stashfile" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.sth"/>
+   <VirtualHostGroup Name="default_host">
+      <VirtualHost Name="*:9080"/>
+      <VirtualHost Name="*:80"/>
+      <VirtualHost Name="*:9443"/>
+      <VirtualHost Name="*:5060"/>
+      <VirtualHost Name="*:5061"/>
+      <VirtualHost Name="*:443"/>
+      <VirtualHost Name="*:9081"/>
+      <VirtualHost Name="*:9444"/>
+      <VirtualHost Name="*:5063"/>
+      <VirtualHost Name="*:5062"/>
+      <VirtualHost Name="prodfinwas02:9080"/>
+      <VirtualHost Name="prodfinwas02:80"/>
+      <VirtualHost Name="prodfinwas02:9443"/>
+      <VirtualHost Name="prodfinwas02:5060"/>
+      <VirtualHost Name="prodfinwas02:5061"/>
+      <VirtualHost Name="prodfinwas02:443"/>
+      <VirtualHost Name="prodfinwas02:9081"/>
+      <VirtualHost Name="prodfinwas02:9444"/>
+      <VirtualHost Name="prodfinwas02:5063"/>
+      <VirtualHost Name="prodfinwas02:5062"/>
+      <VirtualHost Name="*:10225"/>
+      <VirtualHost Name="*:10225"/>
+      <VirtualHost Name="*:10225"/>
+      <VirtualHost Name="*:10225"/>
+      <VirtualHost Name="*:11225"/>
+        <VirtualHost Name="*:30225"/>
+        <VirtualHost Name="prodfinwas04:9080"/>
+      <VirtualHost Name="prodfinwas04:80"/>
+      <VirtualHost Name="prodfinwas04:9443"/>
+      <VirtualHost Name="prodfinwas04:5060"/>
+      <VirtualHost Name="prodfinwas04:5061"/>
+      <VirtualHost Name="prodfinwas04:443"/>
+      <VirtualHost Name="prodfinwas04:9081"/>
+      <VirtualHost Name="prodfinwas04:9444"/>
+      <VirtualHost Name="prodfinwas04:5063"/>
+      <VirtualHost Name="prodfinwas04:5062"/>
+      <VirtualHost Name="prodfinwas03:9080"/>
+      <VirtualHost Name="prodfinwas03:80"/>
+      <VirtualHost Name="prodfinwas03:9443"/>
+      <VirtualHost Name="prodfinwas03:5060"/>
+      <VirtualHost Name="prodfinwas03:5061"/>
+      <VirtualHost Name="prodfinwas03:443"/>
+      <VirtualHost Name="prodfinwas03:9081"/>
+      <VirtualHost Name="prodfinwas03:9444"/>
+      <VirtualHost Name="prodfinwas03:5063"/>
+      <VirtualHost Name="prodfinwas03:5062"/>
+   </VirtualHostGroup>
+   <ServerCluster CloneSeparatorChange="false" GetDWLMTable="false" IgnoreAffinityRequests="false" LoadBalance="Round Robin" Name="prdcluster" PostBufferSize="0" PostSizeLimit="-1" RemoveSpecialHeaders="true" RetryInterval="60" ServerIOTimeoutRetry="3">
+      <Server CloneID="1h7unc958" ConnectTimeout="10" ExtendedHandshake="false" LoadBalanceWeight="20" MaxConnections="0" Name="prodfinwas01Node01_cluster1" ServerIOTimeout="250" WaitForContinue="false">
+         <Transport ConnectionTTL="28" Hostname="prodfinwas01" Port="9080" Protocol="http"/>
+         <Transport ConnectionTTL="28" Hostname="prodfinwas01" HostnameAlias="prodfinwas01" Port="9443" Protocol="https">
+            <Property Name="keyring" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.kdb"/>
+            <Property Name="stashfile" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <Server CloneID="1h7uncagf" ConnectTimeout="10" ExtendedHandshake="false" LoadBalanceWeight="20" MaxConnections="0" Name="prodfinwas02Node01_cluster2" ServerIOTimeout="250" WaitForContinue="false">
+         <Transport ConnectionTTL="28" Hostname="prodfinwas02" Port="9080" Protocol="http"/>
+         <Transport ConnectionTTL="28" Hostname="prodfinwas02" HostnameAlias="prodfinwas02" Port="9443" Protocol="https">
+            <Property Name="keyring" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.kdb"/>
+            <Property Name="stashfile" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.sth"/>
+                        </Transport>
+      </Server>
+
+      <Server CloneID="1hes0dp16" ConnectTimeout="10" ExtendedHandshake="false" LoadBalanceWeight="20" MaxConnections="0" Name="prodfinwas03Node01_cluster3" ServerIOTimeout="250" WaitForContinue="false">
+         <Transport ConnectionTTL="28" Hostname="prodfinwas03" Port="9080" Protocol="http"/>
+         <Transport ConnectionTTL="28" Hostname="prodfinwas03" HostnameAlias="prodfinwas03" Port="9443" Protocol="https">
+            <Property Name="keyring" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.kdb"/>
+            <Property Name="stashfile" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.sth"/>
+         </Transport>
+      </Server>
+                <Server CloneID="1hes0drah" ConnectTimeout="10" ExtendedHandshake="false" LoadBalanceWeight="19" MaxConnections="0" Name="prodfinwas04Node01_cluster4" ServerIOTimeout="250" WaitForContinue="false">
+         <Transport ConnectionTTL="28" Hostname="prodfinwas04" Port="9080" Protocol="http"/>
+         <Transport ConnectionTTL="28" Hostname="prodfinwas04" HostnameAlias="prodfinwas04" Port="9443" Protocol="https">
+            <Property Name="keyring" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.kdb"/>
+            <Property Name="stashfile" Value="/finweb/WebSphere/Plugins/config/INDSPRODwebserver0/plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <PrimaryServers>
+         <Server Name="prodfinwas01Node01_cluster1"/>
+         <Server Name="prodfinwas02Node01_cluster2"/>
+                 <Server Name="prodfinwas03Node01_cluster3"/>
+         <Server Name="prodfinwas04Node01_cluster4"/>
+      </PrimaryServers>
+   </ServerCluster>
+   <UriGroup Name="default_host_prdcluster_URIs">
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/IBM_WS_SYS_RESPONSESERVLET/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/IBM_WS_SYS_RESPONSESERVLET/*.jsp"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/IBM_WS_SYS_RESPONSESERVLET/*.jsv"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/IBM_WS_SYS_RESPONSESERVLET/*.jsw"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/IBM_WS_SYS_RESPONSESERVLET/j_security_check"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/IBM_WS_SYS_RESPONSESERVLET/ibm_security_logout"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/fininfra/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/fwi-web/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/FISERVLET/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/fipRest/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/fiwebservice/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/FIJson/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/fiechoservice/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/fsbGenWS/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/finbranch/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/FinacleCRM/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/finbranchEOD1/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/finbranchEOD2/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/finbranchEOD3/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/finbranchEOD4/*"/>
+   </UriGroup>
+   <Route ServerCluster="prdcluster" UriGroup="default_host_prdcluster_URIs" VirtualHostGroup="default_host"/>
+   <RequestMetrics armEnabled="false" loggingEnabled="false" rmEnabled="false" traceLevel="HOPS">
+      <filters enable="false" type="URI">
+         <filterValues enable="false" value="/snoop"/>
+         <filterValues enable="false" value="/hitcount"/>
+      </filters>
+      <filters enable="false" type="SOURCE_IP">
+         <filterValues enable="false" value="255.255.255.255"/>
+         <filterValues enable="false" value="254.254.254.254"/>
+      </filters>
+      <filters enable="false" type="JMS">
+         <filterValues enable="false" value="destination=aaa"/>
+      </filters>
+      <filters enable="false" type="WEB_SERVICES">
+         <filterValues enable="false" value="wsdlPort=aaa:op=bbb:nameSpace=ccc"/>
+      </filters>
+   </RequestMetrics>
+</Config>
