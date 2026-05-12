@@ -1,4 +1,11 @@
 QUEUES _ COMMANDS
+
+Creation COMMANDS:
+crtmqm -ll -lp 200 -ls 100 -lf 1000 DELL ----- To create the QMANAGER along with the log type & log size( in real time for PROD we will prefored)
+DEFINE PROCESS(MYPROCESS) APPLTYPE(EXEC) APPLICID('/path/to/app') --- define the process for trigggering 1st then create queue along with process
+DEFINE QLOCAL(MYQUEUE) TRIGGER TRIGTYPE(FIRST) TRIGMPRI(0) TRIGDATA('StartMyApp') PROCESS(MYPROCESS) INITQ(SYSTEM.DEFAULT.INITIATION.QUEUE)   ---- queue creation along with triggering inclindig above process
+
+
 BACKUP_COMMANDS:
 ***************
 dmpmqcfg -m INDUSNET -a -o mqsc > INDUSNET_config.mqsc  --- To take backup of QMANAGER configration ( AT the time of Migration, cloning, backup, )
