@@ -50,6 +50,8 @@ tar -cvf jboss-eap-7.4_DR_setup.tar --exclude=jboss-eap-7.4/domain/servers --exc
 tar -cvf jboss-eap-7.3_BeforeMigration.tar --exclude='*/log/*' jboss-eap-7.3
 
 find /data/ame6.5-cache/jbcs-httpd24-2.4 -iname robots.txt :- to check that file is existing or not.
+grep -r "http://10.60.41.159:8080/WhatsApp/incoming" /path/to/search -- to search word or letter in all folders & files.
+``
 
 alternatives --config java :- to find the java paths
 
