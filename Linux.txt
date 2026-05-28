@@ -3,6 +3,7 @@ netstat -an | grep LISTEN | grep 9444 :- AIX
 
 tar -cvf jbcs-httpd24-2.4_v2.4.57_B4Migration_24March26.tar --exclude='*/logs/*' jbcs-httpd24-2.4 --- totake thr tar bacukp without unnessary logs 
 
+grep -i 'FALERT' DMQ_C_INFO_ALERT_TBL_29052026.txt >falert_29052026.txt  --- to extract perticular word or ID from a file & convert it in single file.
 ./backupConfig.sh -nostop
 
 curl -v -k telnet://10.24.121.38:443
