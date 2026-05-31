@@ -59,6 +59,10 @@ alternatives --config java :- to find the java paths
 ps -ef|grep java|grep AppServer|awk '{print $2}'|xargs kill -9  :- To stop all the running JVMS.
 
 ps -ef | grep httpd | grep -v grep | awk {'print $2'} | xargs kill -9
+Ex:ps -ef | grep Dwas | grep Dwas | grep -v grep | awk '{print $2}' | xargs kill -9 -- To kill all the WAS process including nodes
+ 
+ps -ef | grep Dwas | grep -v dmgr | grep -v grep | awk '{print $2}' | xargs -r kill -9 --- To kill all process except Dmgr.
+ 
 
 find /path/ -name filename :- to check the available files in linux.
 =======================================Proxy pass conf in JBcs===============================
