@@ -18,6 +18,10 @@ ALTER QLOCAL(NTS_STP_RES) MAXMSGL(15000000)  --- TO CHANGE PARAMETERS
 dspmqaut -m DEVTIMQMGR -t qmgr -p coadmin    ---- TO CHECK USER PERMISSIONS
 setmqaut -m DEVTIMQMGR -t qmgr -p coadmin +connect +inq  ---TO PROVIDE PERMISSIONS TO USERS
 
+DIS AUTHINFO(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) ----User ID & Password authentication against the Operating System 
+ 
+ALTER AUTHINFO(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) AUTHTYPE(IDPWOS) CHCKCLNT(NONE) ---- To close & provide the access for users 
+ 
 DISPAY COMMANDS:
 ***************
 DISPLAY QLOCAL(*)  --ALL QUEUES
