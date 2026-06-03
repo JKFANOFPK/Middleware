@@ -12,6 +12,7 @@ curl -k -x HTTP_Method https://Ip/domain :- to know whether the method is allowe
 curl -X TRACE https://campuat.indusind.com:443 -k -v
 
 openssl s_client -connect 10.24.115.76:443 -tls1_2  :- To check TLS version avialability
+openssl pkcs12 -export -out awtunnel.indusind.com.pfx -inkey awtunnel.indusind.com_.key -in awtunnel.indusind.com.crt ---convert crt to pfx file
 
 ==========================windows-TLS-validation===============
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client"
