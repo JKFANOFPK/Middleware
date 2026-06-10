@@ -1,0 +1,27 @@
+BM WAS:
+ 
+WAS BASE:
+1 core = 100 PVU
+1 PVU = INR 9000
+Required core(UAT & PROD) = 24 cores
+Costing of 24 cores = 2400 PVU = INR 2,16,00,000
+ 
+WAS ND:
+1 core = 100 PVU
+1 PVU = INR 14000
+Required core(UAT & PROD) = 24 cores
+Costing of 24 cores = 2400 PVU = INR 3,36,00,000
+ 
+ 
+JBOSS EAP:
+ 
+1 core = INR 60000
+24 cores = INR 14,40,000
+ 
+IBM MQ:
+ 
+1 core = 100 PVU
+1 PVU = INR 14000
+Required core(UAT & PROD) = 8 cores
+Costing of 8 cores = 800 PVU = INR 1,12,00,000
+ 
