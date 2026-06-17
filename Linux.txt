@@ -95,3 +95,22 @@ We have to set the above value under the below tag..
                 </host>
             </server>
 =================================================================================================
+
+
+Keytool --Commands:
+To convert certs or jks into txt
+ 
+keytool -list -v -keystore indusinstapin.indusind.com.jks E:\JBOSS\jboss-eap-7.4.0\jboss-eap-7.4\standalone\configuration\ssl\\indusinstapin.indusind.com_25112025.txt      -------To convert certs or jks into txt
+
+command:  
+"C:\Program Files\Java\jdk1.8.0_333\bin\keytool.exe" -importcert -trustcacerts -keystore "C:\Program Files\Java\jdk1.8.0_333\jre\lib\security\cacerts" -alias Zscaler_Inter_2025 -file "E:\jboss-eap-7.0\signycerts\Zscaler_Intermediate.crt" -storepass changeit                   ----- To import certificates in Cacerts in Windows
+
+keytool -list -v -keystore /usr/java8_64/jre/lib/security/cacerts -storepass changeit > cacerts.txt   ------ convert cacerts or jks into txt
+
+openssl pkcs12 -export -out awtunnel.indusind.com.pfx -inkey awtunnel.indusind.com_.key -in awtunnel.indusind.com.crt ---- to convert crt certificate into pfx file
+sudo keytool -v -import -file /home/mwadmin/indusms.indusind.bank.in_2025/ServerCertificate.crt -alias SMS_Server_2025 -keystore /etc/pki/ca-trust/extracted/java/cacerts -storepass changeit   --- To import certificates in cacerts in Linux same command for remaing root & inter certificates
+
+
+
+
+
