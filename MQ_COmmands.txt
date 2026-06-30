@@ -24,6 +24,9 @@ ALTER AUTHINFO(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) AUTHTYPE(IDPWOS) CHCKCLNT(NONE) -
  
 DISPAY COMMANDS:
 ***************
+
+DISPLAY QMGR REPOS  ----- To check Full Repository
+DISPLAY QMGR REPOSNL  ---- To check Partial Repository
 DISPLAY QLOCAL(*)  --ALL QUEUES
 DISPLAY CHSTATUS QSTATUS(FSR.INCOMING) -- status of QUEUE
 DISPLAY QSTATUS((INDBBRQ)) CURDEPTH IPPROCS OPPROCS    --- to check connected of sending & consuming services information
